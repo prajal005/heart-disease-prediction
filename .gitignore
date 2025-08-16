@@ -17,10 +17,6 @@ data/
 *.csv
 *.xlsx
 
-# Models (can be very large)
-model/
-*.pkl
-
 # Logs
 logs/
 *.logs
@@ -34,5 +30,4 @@ Thumbs.db
 # Extras
 anaconda_projects/
 configs
-scripts
 metadata.txt
