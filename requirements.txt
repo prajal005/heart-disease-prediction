@@ -1,4 +1,6 @@
-# Add your project dependencies here
-- numpy
-- pandas
-- scikit-learn (for ML projects)
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+jupyter
