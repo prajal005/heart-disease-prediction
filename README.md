@@ -7,9 +7,7 @@ A Machine Learning project to predict the presence of heart disease based on cli
 - `notebooks/`: Jupyter notebooks for exploration, preprocessing, and model experimentation
 - `models/`: Trained ML models saved for reuse
 - `requirements.txt`: List of dependencies to install
-- `app.py`: Main application script (prediction/streamlit app/etc.)
 - `README.md`: Project documentation
-
 
 ## Getting Started
 1. Clone the repository(First time only)
