@@ -30,3 +30,8 @@ logs/
 
 # OS files
 Thumbs.db
+
+# Extras
+configs
+scripts
+metadata.txt
