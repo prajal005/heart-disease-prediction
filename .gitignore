@@ -32,6 +32,7 @@ logs/
 Thumbs.db
 
 # Extras
+anaconda_projects/
 configs
 scripts
 metadata.txt
