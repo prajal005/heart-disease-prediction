@@ -1,0 +1,32 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupiter checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# Data (don't upload raw/large datasets)
+data/
+*.csv
+*.xlsx
+
+# Models (can be very large)
+model/
+*.pkl
+
+# Logs
+logs/
+*.logs
+
+# IDE/editor settings
+.vscode/
+
+# OS files
+Thumbs.db
