@@ -1,0 +1,42 @@
+# General project settings
+project_name: "ML_Project"
+author: "Your Name"
+created_date: "2024-11-29"
+
+# Data settings
+data:
+  input_path: "data/raw/"
+  processed_path: "data/processed/"
+  output_path: "data/output/"
+  test_size: 0.2  # Proportion of dataset for testing
+  random_state: 42  # For reproducibility
+
+# Feature engineering
+feature_engineering:
+  scaling: "StandardScaler"  # Options: StandardScaler, MinMaxScaler
+  encoding: "OneHotEncoder"  # Options: OneHotEncoder, LabelEncoder
+  feature_selection: 
+    enabled: true
+    method: "SelectKBest"  # Options: SelectKBest, PCA, etc.
+    parameters:
+      k: 10
+
+# Model settings
+model:
+  type: "RandomForest"  # Options: RandomForest, SVM, LogisticRegression, etc.
+  hyperparameters:
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+
+# Training settings
+training:
+  cross_validation_folds: 5
+  scoring_metric: "accuracy"  # Options: accuracy, f1_score, precision, recall
+  save_model: true
+  model_output_path: "models/ml_model.pkl"
+
+# Logging and monitoring
+logging:
+  log_file: "logs/ml_training.log"
+  log_level: "INFO"
