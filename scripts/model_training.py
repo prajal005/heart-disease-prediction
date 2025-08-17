@@ -3,7 +3,7 @@
 import pandas as pd
 import joblib
 import os
-from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import LogisticRegression
 
 def train_and_save_model():
     """
