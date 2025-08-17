@@ -11,7 +11,7 @@ import pandas as pd
 import joblib
 import os
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 
 def run_preprocessing():
@@ -36,12 +36,26 @@ def run_preprocessing():
     categorical_features = ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal']
     numerical_features = ['age', 'trestbps', 'chol', 'thalach', 'oldpeak']
 
+    print("--- Removal of Outlier ---")
+    # The `ca` feature is categorical but has outliers that can be removed.
+    # `thalach` is a numerical feature with a value of 202 which is considered an outlier.
+    X= X[X['ca'] <= 3]
+    X= X[X['thalach'] <= 200]
+    y= y.loc[X.index]
+    print("Outlier in 'ca' and 'thalach' column removed.")
+
     # 3. Split into Training and Testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
     print("Data split into training and testing sets.")
 
     # 4. Create the Preprocessing Pipeline
-    preprocessor = ColumnTransformer(transformers=[('num', StandardScaler(), numerical_features),('cat', OneHotEncoder(handle_unknown='ignore', drop='first'), categorical_features)],remainder='passthrough')
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ('num', MinMaxScaler(), numerical_features),
+            ('cat', OneHotEncoder(handle_unknown='ignore', drop='first'), categorical_features)
+        ],
+        remainder='passthrough'
+    )
 
     # 5. Fitting the Preprocessor and Saving It
     preprocessor.fit(X_train)

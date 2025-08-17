@@ -3,23 +3,51 @@
 # This script evaluates the trained ML model.
 import pandas as pd
 import joblib
+import os
 from sklearn.metrics import accuracy_score
 
 def evaluate_model():
-    # Load test dataset
-    data = pd.read_csv('data/test_dataset.csv')
-    X_test = data.drop('target', axis=1)
-    y_test = data['target']
+    """
+    Loads the preprocessed test data, trained model and makes prediction.
+    """
+    print("--- Starting Model Evaluation ---")
 
-    # Load the trained model
-    model = joblib.load('models/random_forest_model.pkl')
+    processed_test_data = '../data/processed/test.csv' 
+    model_path = '../models/logistic_regression_model.pkl' 
 
-    # Make predictions
-    predictions = model.predict(X_test)
+    # 1. Load Preprocessed Test Data
+    try:
+        test_df = pd.read_csv(processed_test_data)
+        print(f"Preprocessed test data loaded successfully from '{processed_test_data}'")
+    except FileNotFoundError:
+        print(f"Error: '{processed_test_data}' not found. Please ensure it exists.")
+        return
 
-    # Evaluate the model
-    accuracy = accuracy_score(y_test, predictions)
+    X_test = test_df.drop('target', axis=1)
+    y_test = test_df['target']
+
+    # 2. Load Trained Model
+    try:
+        model = joblib.load(model_path)
+        print(f"Trained model loaded successfully from '{model_path}'")
+    except FileNotFoundError:
+        print(f"Error: Trained model not found at '{model_path}'. Please ensure you have trained and saved the model.")
+        return
+    except Exception as e:
+        print(f"Error loading model: {e}")
+        return
+
+    # 3. Make Predictions
+    print("Making predictions on the test data...")
+    y_pred = model.predict(X_test)
+    print("Predictions completed.")
+
+    # 4. Evaluate the Model
+    print("\n--- Model Evaluation Results ---")
+    accuracy = accuracy_score(y_test, y_pred)
     print(f"Model Accuracy: {accuracy * 100:.2f}%")
+
+    print("--- Model Evaluation Complete ---")
 
 if __name__ == "__main__":
     evaluate_model()
