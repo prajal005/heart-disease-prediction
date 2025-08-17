@@ -1,4 +1,3 @@
-# visualisation.py
 # This script generates and saves key visualizations from the raw dataset
 
 import pandas as pd

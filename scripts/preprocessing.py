@@ -1,4 +1,3 @@
-# preprocessing.py
 # This script is dedicated to preprocessing the raw heart disease data.
 # It performs the following steps:
 # 1. Loads the raw data.
