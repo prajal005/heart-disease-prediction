@@ -53,7 +53,7 @@ def train_and_save_model():
     save_model(best_model, model_path)
 
     # Save  the tuning results for analysis
-    results_path= 'reports/metrics/tuning_results.json'
+    results_path= '../reports/metrics/tuning_results.json'
     save_tuning_results(grid_search.cv_results_, grid_search.best_params_, results_path)
     
     print("--- Model Training Script Finished ---")
