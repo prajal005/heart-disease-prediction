@@ -1,9 +1,11 @@
 # This script trains the best performing model based on the analysis
 
 import pandas as pd
-import joblib
+import numpy as np
 import os
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import GridSearchCV
+from model_utils import save_model, save_tuning_results
 
 def train_and_save_model():
     """
@@ -25,19 +27,34 @@ def train_and_save_model():
     X_train = train_df.drop('target', axis=1)
     y_train = train_df['target']
 
-    # 3. Initialize and Train the Best Model
-    print("Initializing and training the Logistic Regression model...")
-    model = LogisticRegression()
-    model.fit(X_train, y_train)
-    print("Model training complete.")
-
-    # 4. Saving the Trained Model
-    os.makedirs('../models', exist_ok=True)
+    # 3. Initialize Model and define Hyperparameter grid
+    print("Initializing Logistic Regression model for tuning...")
+    model = LogisticRegression(max_iter=2000, random_state=42)
     
-    # Saving the model using joblib
-    model_path = '../models/logistic_regression_model.pkl'
-    joblib.dump(model, model_path)
-    print(f"Trained model saved successfully to '{model_path}'")
+    # Define the hyperparameter grid to search
+    param_grid ={
+        'C': [0.01, 0.1, 1, 10, 100],
+        'penalty': ['l1', 'l2'],
+        'solver': ['liblinear', 'saga']
+    }
+
+    # Setup and run GridSearchCV
+    print("Starting hyperparameter tuning with GridSeachCV...")
+    grid_search= GridSearchCV(estimator=model, param_grid=param_grid, cv=5, scoring='accuracy', n_jobs=-1, verbose=1)
+    grid_search.fit(X_train, y_train)
+
+    # Display and log best results
+    print(f"\nBest Parameters found: {grid_search.best_params_}")
+    print(f"Best Cross-Validation Accuracy: {grid_search.best_score_:.4f}")
+
+    # 4. Saving the Best Trained Model
+    best_model= grid_search.best_estimator_
+    model_path= '../models/final_model.pkl'
+    save_model(best_model, model_path)
+
+    # Save  the tuning results for analysis
+    results_path= 'reports/metrics/tuning_results.json'
+    save_tuning_results(grid_search.cv_results_, grid_search.best_params_, results_path)
     
     print("--- Model Training Script Finished ---")
 

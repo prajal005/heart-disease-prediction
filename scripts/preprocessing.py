@@ -79,7 +79,7 @@ def run_preprocessing():
     test_processed_df = pd.DataFrame(X_test_processed, columns=feature_names)
     test_processed_df['target'] = y_test.reset_index(drop=True)
 
-    # Creatinh the processed data directory and saving the files
+    # Creating the processed data directory and saving the files
     os.makedirs('../data/processed', exist_ok=True)
     train_processed_df.to_csv('../data/processed/train.csv', index=False)
     test_processed_df.to_csv('../data/processed/test.csv', index=False)
