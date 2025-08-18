@@ -13,9 +13,9 @@ venv/
 .venv/
 
 # Data (don't upload raw/large datasets)
-data/
-*.csv
-*.xlsx
+#data/
+#*.csv
+#*.xlsx
 
 # Logs
 logs/
