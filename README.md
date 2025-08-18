@@ -6,7 +6,7 @@ A Machine Learning project to predict the presence of heart disease based on cli
 - `data/`: Contains the dataset(s) used for training and testing
 - `notebooks/`: Jupyter notebooks for exploration, preprocessing, and model experimentation
 - `models/`: Trained ML models saved for reuse
-- `scripts`: Python scripts for preprocessing, training, evaluation, and visualization
+- `scripts/`: Python scripts for preprocessing, training, evaluation, and visualization
   - `preprocessing.py`: Data cleaning and preprocessing
   - `model_training.py`: Training machine learning models
   - `model_evaluation.py`: Evaluation of trained models
