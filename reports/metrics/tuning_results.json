@@ -6,10 +6,10 @@
     },
     "results": [
         {
-            "mean_fit_time": 0.03266949653625488,
-            "std_fit_time": 0.0036160179772557833,
-            "mean_score_time": 0.002006053924560547,
-            "std_score_time": 3.398614822617619e-06,
+            "mean_fit_time": 0.034871673583984374,
+            "std_fit_time": 0.004691912467402591,
+            "mean_score_time": 0.0025415897369384767,
+            "std_score_time": 0.0004941040243827282,
             "param_C": 10.0,
             "param_penalty": "l2",
             "param_solver": "saga",
@@ -28,10 +28,10 @@
             "rank_test_score": 1
         },
         {
-            "mean_fit_time": 0.004834747314453125,
-            "std_fit_time": 0.0006812627832451243,
-            "mean_score_time": 0.002046632766723633,
-            "std_score_time": 0.001013510065090478,
+            "mean_fit_time": 0.005574083328247071,
+            "std_fit_time": 0.0003451614878105461,
+            "mean_score_time": 0.002806425094604492,
+            "std_score_time": 0.0005574458470664609,
             "param_C": 10.0,
             "param_penalty": "l2",
             "param_solver": "liblinear",
@@ -50,10 +50,10 @@
             "rank_test_score": 1
         },
         {
-            "mean_fit_time": 0.059315729141235354,
-            "std_fit_time": 0.0121076106883362,
-            "mean_score_time": 0.0018622398376464844,
-            "std_score_time": 0.0010303956421083018,
+            "mean_fit_time": 0.06261577606201171,
+            "std_fit_time": 0.011659482929047666,
+            "mean_score_time": 0.0024033069610595705,
+            "std_score_time": 0.000580788429929976,
             "param_C": 10.0,
             "param_penalty": "l1",
             "param_solver": "saga",
@@ -72,10 +72,10 @@
             "rank_test_score": 1
         },
         {
-            "mean_fit_time": 0.010893011093139648,
-            "std_fit_time": 0.0035198176108663043,
-            "mean_score_time": 0.002223968505859375,
-            "std_score_time": 0.00039881703261765254,
+            "mean_fit_time": 0.011580753326416015,
+            "std_fit_time": 0.0032041474100758713,
+            "mean_score_time": 0.00273590087890625,
+            "std_score_time": 0.00038798828715833094,
             "param_C": 10.0,
             "param_penalty": "l1",
             "param_solver": "liblinear",
@@ -94,10 +94,10 @@
             "rank_test_score": 1
         },
         {
-            "mean_fit_time": 0.0533785343170166,
-            "std_fit_time": 0.01629520637525681,
-            "mean_score_time": 0.0031055927276611326,
-            "std_score_time": 0.003298054342268795,
+            "mean_fit_time": 0.0661557674407959,
+            "std_fit_time": 0.02149114804926133,
+            "mean_score_time": 0.0018004894256591797,
+            "std_score_time": 0.0004001643000758315,
             "param_C": 100.0,
             "param_penalty": "l2",
             "param_solver": "saga",
@@ -116,10 +116,10 @@
             "rank_test_score": 5
         },
         {
-            "mean_fit_time": 0.08791241645812989,
-            "std_fit_time": 0.043339478870639464,
-            "mean_score_time": 0.0027093887329101562,
-            "std_score_time": 0.0035208546600612226,
+            "mean_fit_time": 0.10054287910461426,
+            "std_fit_time": 0.03732467258901146,
+            "mean_score_time": 0.001599884033203125,
+            "std_score_time": 0.0004901545880167128,
             "param_C": 100.0,
             "param_penalty": "l1",
             "param_solver": "saga",
@@ -138,10 +138,10 @@
             "rank_test_score": 5
         },
         {
-            "mean_fit_time": 0.028180646896362304,
-            "std_fit_time": 0.011686003589364094,
-            "mean_score_time": 0.0035295009613037108,
-            "std_score_time": 0.0032959902763540967,
+            "mean_fit_time": 0.034234142303466795,
+            "std_fit_time": 0.017229797614292493,
+            "mean_score_time": 0.0025056838989257813,
+            "std_score_time": 0.0010018600681300555,
             "param_C": 100.0,
             "param_penalty": "l1",
             "param_solver": "liblinear",
@@ -160,10 +160,10 @@
             "rank_test_score": 5
         },
         {
-            "mean_fit_time": 0.005897998809814453,
-            "std_fit_time": 0.0010253637205118033,
-            "mean_score_time": 0.002256917953491211,
-            "std_score_time": 0.0007611166129122088,
+            "mean_fit_time": 0.006082391738891602,
+            "std_fit_time": 0.0010655267421479846,
+            "mean_score_time": 0.0025017261505126953,
+            "std_score_time": 0.0004465484643581279,
             "param_C": 100.0,
             "param_penalty": "l2",
             "param_solver": "liblinear",
@@ -182,10 +182,10 @@
             "rank_test_score": 5
         },
         {
-            "mean_fit_time": 0.029631853103637695,
-            "std_fit_time": 0.010122542455185844,
-            "mean_score_time": 0.0019093990325927735,
-            "std_score_time": 0.000486368539257037,
+            "mean_fit_time": 0.030744361877441406,
+            "std_fit_time": 0.009636248866192309,
+            "mean_score_time": 0.002399253845214844,
+            "std_score_time": 0.0004886759572689184,
             "param_C": 1.0,
             "param_penalty": "l1",
             "param_solver": "saga",
@@ -204,10 +204,10 @@
             "rank_test_score": 9
         },
         {
-            "mean_fit_time": 0.005803489685058593,
-            "std_fit_time": 0.0005773943867387934,
-            "mean_score_time": 0.002411174774169922,
-            "std_score_time": 0.0008595965207074975,
+            "mean_fit_time": 0.007359218597412109,
+            "std_fit_time": 0.001021375380040607,
+            "mean_score_time": 0.0024866580963134764,
+            "std_score_time": 0.00047343438040580734,
             "param_C": 1.0,
             "param_penalty": "l1",
             "param_solver": "liblinear",
@@ -226,10 +226,10 @@
             "rank_test_score": 10
         },
         {
-            "mean_fit_time": 0.004641675949096679,
-            "std_fit_time": 0.000971933561697414,
-            "mean_score_time": 0.002010965347290039,
-            "std_score_time": 2.8032185471914423e-06,
+            "mean_fit_time": 0.004422044754028321,
+            "std_fit_time": 7.052848743658206e-05,
+            "mean_score_time": 0.0023907184600830077,
+            "std_score_time": 0.00019458190798646907,
             "param_C": 1.0,
             "param_penalty": "l2",
             "param_solver": "liblinear",
@@ -248,10 +248,10 @@
             "rank_test_score": 11
         },
         {
-            "mean_fit_time": 0.013108301162719726,
-            "std_fit_time": 0.0009081445036624082,
-            "mean_score_time": 0.0018104076385498046,
-            "std_score_time": 0.00039641932786646934,
+            "mean_fit_time": 0.013079166412353516,
+            "std_fit_time": 0.0016807388579394267,
+            "mean_score_time": 0.0024430274963378905,
+            "std_score_time": 0.0005991888068843064,
             "param_C": 1.0,
             "param_penalty": "l2",
             "param_solver": "saga",
@@ -270,10 +270,10 @@
             "rank_test_score": 12
         },
         {
-            "mean_fit_time": 0.007309627532958984,
-            "std_fit_time": 0.0010100340035010186,
-            "mean_score_time": 0.0019274234771728515,
-            "std_score_time": 0.0004921123128579707,
+            "mean_fit_time": 0.007392215728759766,
+            "std_fit_time": 0.00048021267134351685,
+            "mean_score_time": 0.0027116775512695313,
+            "std_score_time": 0.000395614252486801,
             "param_C": 0.1,
             "param_penalty": "l2",
             "param_solver": "saga",
@@ -292,10 +292,10 @@
             "rank_test_score": 13
         },
         {
-            "mean_fit_time": 0.0043872356414794925,
-            "std_fit_time": 0.0004329180268346506,
-            "mean_score_time": 0.0024564266204833984,
-            "std_score_time": 0.0005382731648449626,
+            "mean_fit_time": 0.0050045490264892575,
+            "std_fit_time": 0.0005524846442844161,
+            "mean_score_time": 0.002805137634277344,
+            "std_score_time": 0.0009317461958464106,
             "param_C": 0.1,
             "param_penalty": "l2",
             "param_solver": "liblinear",
@@ -314,10 +314,10 @@
             "rank_test_score": 14
         },
         {
-            "mean_fit_time": 0.008102512359619141,
-            "std_fit_time": 0.0009525653423284319,
-            "mean_score_time": 0.003337240219116211,
-            "std_score_time": 0.0010391552866168316,
+            "mean_fit_time": 0.008108282089233398,
+            "std_fit_time": 0.0007361687897081332,
+            "mean_score_time": 0.0036145687103271485,
+            "std_score_time": 0.0008062415718434742,
             "param_C": 0.01,
             "param_penalty": "l2",
             "param_solver": "saga",
@@ -336,10 +336,10 @@
             "rank_test_score": 15
         },
         {
-            "mean_fit_time": 0.005885267257690429,
-            "std_fit_time": 0.0007765952657063391,
-            "mean_score_time": 0.003770780563354492,
-            "std_score_time": 0.000632680623123681,
+            "mean_fit_time": 0.009119462966918946,
+            "std_fit_time": 0.004333571680805008,
+            "mean_score_time": 0.003914785385131836,
+            "std_score_time": 0.0008615226954715123,
             "param_C": 0.01,
             "param_penalty": "l2",
             "param_solver": "liblinear",
@@ -358,10 +358,10 @@
             "rank_test_score": 16
         },
         {
-            "mean_fit_time": 0.009027242660522461,
-            "std_fit_time": 0.0007764181470959417,
-            "mean_score_time": 0.002423524856567383,
-            "std_score_time": 0.000807295941138059,
+            "mean_fit_time": 0.010770463943481445,
+            "std_fit_time": 0.002494705466596813,
+            "mean_score_time": 0.0025038719177246094,
+            "std_score_time": 0.00044885218919104176,
             "param_C": 0.1,
             "param_penalty": "l1",
             "param_solver": "saga",
@@ -380,10 +380,10 @@
             "rank_test_score": 17
         },
         {
-            "mean_fit_time": 0.005285072326660156,
-            "std_fit_time": 0.0007863287982682999,
-            "mean_score_time": 0.0020792484283447266,
-            "std_score_time": 0.0006425446083571379,
+            "mean_fit_time": 0.005428934097290039,
+            "std_fit_time": 0.0009270673450059879,
+            "mean_score_time": 0.0025624752044677733,
+            "std_score_time": 0.00046432399686977915,
             "param_C": 0.1,
             "param_penalty": "l1",
             "param_solver": "liblinear",
@@ -402,10 +402,10 @@
             "rank_test_score": 18
         },
         {
-            "mean_fit_time": 0.007016324996948242,
-            "std_fit_time": 0.0017401689763668548,
-            "mean_score_time": 0.004121541976928711,
-            "std_score_time": 0.0007795951410216359,
+            "mean_fit_time": 0.008616447448730469,
+            "std_fit_time": 0.0025002121945531704,
+            "mean_score_time": 0.003380155563354492,
+            "std_score_time": 0.0005076551936999229,
             "param_C": 0.01,
             "param_penalty": "l1",
             "param_solver": "saga",
@@ -424,10 +424,10 @@
             "rank_test_score": 19
         },
         {
-            "mean_fit_time": 0.0048122406005859375,
-            "std_fit_time": 0.0008151544399089039,
-            "mean_score_time": 0.004378986358642578,
-            "std_score_time": 0.0002734876813753547,
+            "mean_fit_time": 0.008585691452026367,
+            "std_fit_time": 0.0026828835084341243,
+            "mean_score_time": 0.004914379119873047,
+            "std_score_time": 0.0019358242427361257,
             "param_C": 0.01,
             "param_penalty": "l1",
             "param_solver": "liblinear",
