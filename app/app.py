@@ -6,7 +6,8 @@ import joblib
 import os
 
 # Setting up the path
-project_dir= os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+app_dir= os.path.dirname(os.path.abspath(__file__))
+project_dir= os.path.dirname(app_dir)
 model_path= os.path.join(project_dir, "models", "final_model.pkl")
 preprocessor_path= os.path.join(project_dir, "models", "preproceessor.pkl")
 
@@ -18,7 +19,7 @@ def load_artifacts():
         model= joblib.load(model_path)
         preprocessor= joblib.load(preprocessor_path)
         return model, preprocessor
-    except FileNotFoundError:
+    except FileNotFoundError as e:
         st.error(f"Error loading model artifacts: {e}")
         st.info("Please make sure the 'final_model.pkl' and 'preprocessor.pkl' file are in the 'models' directory.")
         return None, None
@@ -34,9 +35,9 @@ st.markdown("This app uses a machine learning model to predict the likelihood of
 st.sidebar.header("Patient Input Features")
 
 def get_user_input():
-    age= st.sidebar.sliders('Age', 29, 77, 54)
-    sex= st.sidebar.slider('Sex', ('Male', 'Female'))
-    cp= st.sidebar.slider('Chest Pain Type (cp)', (0, 1, 2, 3))
+    age= st.sidebar.slider('Age', 29, 77, 54)
+    sex= st.sidebar.selectbox('Sex', ('Male', 'Female'))
+    cp= st.sidebar.selectbox('Chest Pain Type (cp)', (0, 1, 2, 3))
     trestbps= st.sidebar.slider('Resting Blood Pressure (trestbps)', 94, 200, 131)
     chol= st.sidebar.slider('Serum Cholestrol in mg/dl (chol)', 126, 564, 246 )
     fbs= st.sidebar.selectbox('Fasting Blood Sugar > 120 mg/dl (fbs)', ('False', 'True'))
