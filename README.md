@@ -35,16 +35,16 @@ The dataset consists of **1,025 patient records** with **14 medical attributes**
 
 ##  Project Workflow
 
-1. **Exploratory Data Analysis** `data_exploration.ipynb`  
+1. **Exploratory Data Analysis** (`data_exploration.ipynb`)  
    - Distribution plots of key features  
    - Correlation heatmap  
    - Visual comparison of target vs. predictors  
 
-2. **Model Training** `training.ipynb`  
+2. **Model Training** (`training.ipynb`)  
    - Trained multiple models (Logistic Regression, KNN, SVM, Naive Bayes, Decision Tree, Random Forest, Gradient Boosting, XGBoost)  
    - Selected **Logistic Regression** as the best-performing model  
 
-3. **Model Testing** `testing.ipynb`  
+3. **Model Testing** (`testing.ipynb`)  
    - Evaluated the tuned Logistic Regression model on unseen test data  
 
 ---
