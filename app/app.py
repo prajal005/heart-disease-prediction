@@ -5,29 +5,36 @@ import pandas as pd
 import joblib 
 import os
 
-# Setting up the path
-app_dir= os.path.dirname(os.path.abspath(__file__))
-project_dir= os.path.dirname(app_dir)
-model_path= os.path.join(project_dir, "models", "final_model.pkl")
-preprocessor_path= os.path.join(project_dir, "models", "preprocessor.pkl")
+st.set_page_config(page_title="Heart Disease Prediction", layout="wide")
 
-# Loading the artifacts
-@st.cache_resource   ## To load the model and preprocessor only once
-def load_artifacts():
-    """Loads the pre-trained model and preprocessor."""
-    try:
-        model= joblib.load(model_path)
-        preprocessor= joblib.load(preprocessor_path)
-        return model, preprocessor
-    except FileNotFoundError as e:
-        st.error(f"Error loading model artifacts: {e}")
-        st.info("Please make sure the 'final_model.pkl' and 'preprocessor.pkl' file are in the 'models' directory.")
-        return None, None
-    
-model, preprocessor= load_artifacts()
+# Setting up the path
+try:
+    app_dir= os.path.dirname(os.path.abspath(__file__))
+    project_dir= os.path.dirname(app_dir)
+    model_path= os.path.join(project_dir, "models", "final_model.pkl")
+    preprocessor_path= os.path.join(project_dir, "models", "preprocessor.pkl")
+
+    # Loading the artifacts
+    @st.cache_resource   ## To load the model and preprocessor only once
+    def load_artifacts():
+        """Loads the pre-trained model and preprocessor."""
+        try:
+            model= joblib.load(model_path)
+            preprocessor= joblib.load(preprocessor_path)
+            return model, preprocessor
+        except FileNotFoundError as e:
+            st.error(f"Error loading model artifacts: {e}")
+            st.info("Please make sure the 'final_model.pkl' and 'preprocessor.pkl' file are in the 'models' directory.")
+            return None, None
+        
+    model, preprocessor= load_artifacts()
+except Exception as e:
+    st.error(f"An error occured during the startup: {e}")
+    model= None
+    preprocessor= None
 
 # --- APP LAYOUT ---
-st.set_page_config(page_title="Heart Disease Prediction", layout="wide")
+
 st.title("Heart Disease Prediction App")
 st.markdown("This app uses a machine learning model to predict the likelihood of heart disease bsaed on the patient data.")
 
@@ -40,7 +47,7 @@ def get_user_input():
     cp= st.sidebar.selectbox('Chest Pain Type (cp)', (0, 1, 2, 3))
     trestbps= st.sidebar.slider('Resting Blood Pressure (trestbps)', 94, 200, 131)
     chol= st.sidebar.slider('Serum Cholestrol in mg/dl (chol)', 126, 564, 246 )
-    fbs= st.sidebar.selectbox('Fasting Blood Sugar > 120 mg/dl (fbs)', ('False', 'True'))
+    fbs= st.sidebar.selectbox('Fasting Blood Sugar > 120 mg/dl (fbs)', ('True', 'False'))
     restecg= st.sidebar.selectbox('Resting Electrocardiographic Results (restecg)', (0, 1, 2))
     thalach= st.sidebar.slider('Maximum Heart Rate Achieved (thalach)', 71, 202, 149)
     exang= st.sidebar.selectbox('Exercise Induced Angina (exang)', ('Yes', 'No'))
@@ -52,7 +59,7 @@ def get_user_input():
     # Conversion of categorical inputs to numerical format which the model expects
     sex_val = 1 if sex == 'Male' else 0
     fbs_val = 1 if fbs == 'True' else 0
-    exang_val = 1 if exang == 'True' else 0
+    exang_val = 1 if exang == 'Yes' else 0
 
     # Creating a dictionary for the inputs
     input_data={
@@ -96,11 +103,11 @@ if model and preprocessor:
             # Display the result
             st.header("Prediction Result")
             if prediction[0] == 1:
-                st.error("High Risk: The model predicts a high likelihood of heart disease.")
-                st.write(f"**Prediction Probability:** {prediction_proba[0][1]*100:.2f}")
-            else:
                 st.success("Low Risk: The model predicts a low likelihood of heart disease.")
-                st.write(f"**Prediction Probability** {prediction_proba[0][0]*100:.2f}")
+                st.write(f"**Prediction Probability** {prediction_proba[0][1]*100:.2f}")
+            else:
+                st.error("High Risk: The model predicts a high likelihood of heart disease.")
+                st.write(f"**Prediction Probability:** {prediction_proba[0][0]*100:.2f}")
 
         except Exception as e:
             st.error(f"An error occured during prediction: {e}")
