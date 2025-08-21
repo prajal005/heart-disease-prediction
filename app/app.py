@@ -35,7 +35,7 @@ st.markdown("This app uses a machine learning model to predict the likelihood of
 st.sidebar.header("Patient Input Features")
 
 def get_user_input():
-    age= st.sidebar.slider('Age', 29, 77, 54)
+    age= st.sidebar.slider('Age', 20, 100, 54)
     sex= st.sidebar.selectbox('Sex', ('Male', 'Female'))
     cp= st.sidebar.selectbox('Chest Pain Type (cp)', (0, 1, 2, 3))
     trestbps= st.sidebar.slider('Resting Blood Pressure (trestbps)', 94, 200, 131)
