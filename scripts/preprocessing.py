@@ -32,21 +32,24 @@ def run_preprocessing():
     X = df.drop('target', axis=1)
     y = df['target']
 
-    # Identify feature types for the preprocessor
-    categorical_features = ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal']
-    numerical_features = ['age', 'trestbps', 'chol', 'thalach', 'oldpeak']
-
-    print("--- Removal of Outlier ---")
-    # The `ca` feature is categorical but has outliers that can be removed.
-    # `thalach` is a numerical feature with a value of 202 which is considered an outlier.
-    X= X[X['ca'] <= 3]
-    X= X[X['thalach'] <= 200]
-    y= y.loc[X.index]
-    print("Outlier in 'ca' and 'thalach' column removed.")
-
     # 3. Split into Training and Testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
     print("Data split into training and testing sets.")
+
+    # The `ca` feature is categorical but has outliers that can be removed.
+    # `thalach` is a numerical feature with a value of 202 which is considered an outlier.
+    print("--- Removal of Outlier based on Trained Data---")    
+    # Condition to identify outlier in the training set
+    outlier_condition_train = (X_train['ca'] <= 3) & (X_train['thalach'] <= 200)
+
+    # Applying the condition to filter X_train and y_train
+    X_train= X_train[outlier_condition_train]
+    y_train= y_train.loc[X_train.index]
+    print("Outliers removed from the training set.")
+
+    # Identify feature types for the preprocessor
+    categorical_features = ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal']
+    numerical_features = ['age', 'trestbps', 'chol', 'thalach', 'oldpeak']
 
     # 4. Create the Preprocessing Pipeline
     preprocessor = ColumnTransformer(
