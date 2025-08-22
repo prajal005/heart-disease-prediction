@@ -9,7 +9,7 @@ def create_preprocessor():
     """
 
     categorical_features= ['sex', 'cp', 'fbs', 'restecg', 'exang', 'slope', 'ca', 'thal']
-    numerical_features= ['age', 'trestbps', 'chol', 'thalach', 'olpeak']
+    numerical_features= ['age', 'trestbps', 'chol', 'thalach', 'oldpeak']
 
     preprocessor= ColumnTransformer(
         transformers=[
