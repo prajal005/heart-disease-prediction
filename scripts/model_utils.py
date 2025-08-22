@@ -18,7 +18,7 @@ def save_pipeline(pipeline, path):
     """
     dir_name= os.path.dirname(path)
     os.makedirs(dir_name, exist_ok= True)
-    joblib.dunp(pipeline, path)
+    joblib.dump(pipeline, path)
     print(f"Pipeline saved successfully to {path}.")
 
 def load_pipeline(path):
