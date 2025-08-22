@@ -71,6 +71,8 @@ def run_training():
 
     cleaned_data_df= pd.DataFrame(cleaned_data_array, columns=features_names)
 
+    cleaned_data_df['target']= y_test.reset_index(drop=True)
+
     # Save the cleaned Dataframe as a CSV file
     output_path= '../data/processed/cleaned_test_data.csv'
     os.makedirs(os.path.dirname(output_path), exist_ok= True)
