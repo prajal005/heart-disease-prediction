@@ -1,45 +1,32 @@
 # This script contains helper functions for saving and loading models.
 
-import joblib
 import os
 import json
+import joblib
 import pandas as pd
 
-def save_model(model, filepath):
+def load_data(path):
     """
-    Saves a trained model to a file.
-
-    Args:
-        model: The trained machine learning model object.
-        filepath (str): The path where the model will be saved (e.g., 'models/heart_disease_model.pkl').
+    Loads a CSV file from the given path.
     """
-    try:
-        os.makedirs(os.path.dirname(filepath), exist_ok=True)
-        joblib.dump(model, filepath)
-        print(f"Model saved successfully to {filepath}")
-    except Exception as e:
-        print(f"Error saving model to {filepath}: {e}")
+    print(f"Loading the data from {path}....")
+    return pd.read_csv(path)
 
-def load_model(filepath):
+def save_pipeline(pipeline, path):
     """
-    Loads a trained model from a file.
-
-    Args:
-        filepath (str): The path to the saved model file.
-
-    Returns:
-        The loaded model object, or None if an error occurs.
+    Saves a scikit-learn pipeline to the specified path.
     """
-    try:
-        model = joblib.load(filepath)
-        print(f"Model loaded successfully from {filepath}")
-        return model
-    except FileNotFoundError:
-        print(f"Error: Model file not found at '{filepath}'")
-        return None
-    except Exception as e:
-        print(f"Error loading model from {filepath}: {e}")
-        return None
+    dir_name= os.path.dirname(path)
+    os.makedirs(dir_name, exist_ok= True)
+    joblib.dunp(pipeline, path)
+    print(f"Pipeline saved successfully to {path}.")
+
+def load_pipeline(path):
+    """
+    Loads a scikit-learn pipeline from a specified path.
+    """
+    print(f"Loading pipeline from {path}...")
+    return joblib.load(path)
     
 def save_tuning_results(results, best_params, filepath):
     """
