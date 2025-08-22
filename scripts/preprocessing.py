@@ -13,7 +13,7 @@ def create_preprocessor():
 
     preprocessor= ColumnTransformer(
         transformers=[
-            ('num', MinMaxScaler(), numerical_features)
+            ('num', MinMaxScaler(), numerical_features),
             ('cat', OneHotEncoder(handle_unknown='ignore', drop='first'), categorical_features)
         ],
         remainder='passthrough'
