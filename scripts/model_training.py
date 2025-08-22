@@ -1,62 +1,60 @@
 # This script trains the best performing model based on the analysis
 
-import pandas as pd
 import numpy as np
-import os
+from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import GridSearchCV
-from model_utils import save_model, save_tuning_results
+from sklearn.model_selection import GridSearchCV, train_test_split
 
-def train_and_save_model():
+from preprocessing import create_preprocessor
+from model_utils import load_data, save_pipeline, save_tuning_results
+
+def run_training():
     """
-    Loads the processed training data, trains the selected model,
-    and saves the trained model artifact.
+    Executes the complete model training and tuning pipeline.
     """
-    print("--- Starting Model Training ---")
+    print("=== Starting Model Training for Logistic Regression ===")
 
-    # 1. Loading Processed Training Data
-    try:
-        train_df = pd.read_csv('../data/processed/train.csv')
-        print("Processed training data loaded successfully.")
-    except FileNotFoundError:
-        print("Error: '../data/processed/train.csv' not found.")
-        print("Please ensure you have run the preprocessing.py script first.")
-        return
+    # Load Data
+    df = load_data('../data/raw/heart.csv')
 
-    # 2. Separating Features (X) and Target (y)
-    X_train = train_df.drop('target', axis=1)
-    y_train = train_df['target']
+    # Split Data
+    X= df.drop('target', axis=1)
+    y= df['target']
+    X_train, X_test, y_train, y_test= train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+    print("Data split into training and testing sets.")
 
-    # 3. Initialize Model and define Hyperparameter grid
-    print("Initializing Logistic Regression model for tuning...")
-    model = LogisticRegression(max_iter=2000, random_state=42)
-    
-    # Define the hyperparameter grid to search
-    param_grid ={
-        'C': [0.01, 0.1, 1, 10, 100],
-        'penalty': ['l1', 'l2'],
-        'solver': ['liblinear', 'saga']
+    # Create full pipeline
+    preprocessor= create_preprocessor()
+    pipeline= Pipeline(steps=[
+        ('preprocessor', preprocessor),
+        ('classifier', LogisticRegression(max_iter=2000, random_state=42))
+    ])
+
+    # Define parameter grid for Logistic Regression
+    param_grid= {
+        'classifier__C': [0.01, 0.1, 1, 10],
+        'classifier__penalty': ['l1', 'l2'],
+        'classifier__solver': ['liblinear', 'saga']
     }
 
-    # Setup and run GridSearchCV
-    print("Starting hyperparameter tuning with GridSeachCV...")
-    grid_search= GridSearchCV(estimator=model, param_grid=param_grid, cv=5, scoring='accuracy', n_jobs=-1, verbose=1)
-    grid_search.fit(X_train, y_train)
+    # Run GridSearchCV
+    search= GridSearchCV(pipeline, param_grid, cv=5, scoring='accuracy', n_jobs=-1, verbose=1)
+    print("Starting hyperparameter tuning for Logistic Regression...")
+    search.fit(X_train, y_train)
 
-    # Display and log best results
-    print(f"\nBest Parameters found: {grid_search.best_params_}")
-    print(f"Best Cross-Validation Accuracy: {grid_search.best_score_:.4f}")
+    print(f"Best cross-validation score: {search.best_score_:.4f} ")
+    print("Best model and hyperparameter found:")
+    print(search.best_params_)
 
-    # 4. Saving the Best Trained Model
-    best_model= grid_search.best_estimator_
-    model_path= '../models/final_model.pkl'
-    save_model(best_model, model_path)
+    # Save the detailed tuning results
+    results_filepath= '../reports/metrics/tuning_results.json'
+    save_tuning_results(search.cv_results_, search.best_params_, results_filepath)
 
-    # Save  the tuning results for analysis
-    results_path= '../reports/metrics/tuning_results.json'
-    save_tuning_results(grid_search.cv_results_, grid_search.best_params_, results_path)
-    
-    print("--- Model Training Script Finished ---")
+    # Save the best pipeline
+    best_pipeline= search.best_estimator_
+    save_pipeline(best_pipeline, '../models/final_pipeline.pkl')
 
-if __name__ == "__main__":
-    train_and_save_model()
+    print("\n=== Model Training Complete ===")
+
+if __name__ == '__main__':
+    run_training()
