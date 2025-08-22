@@ -1,6 +1,8 @@
 # This script trains the best performing model based on the analysis
 
+import os
 import numpy as np
+import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GridSearchCV, train_test_split
@@ -60,6 +62,20 @@ def run_training():
     # Save the best pipeline
     best_pipeline= search.best_estimator_
     save_pipeline(best_pipeline, '../models/final_pipeline.pkl')
+
+    # Saving the cleaned_test_data
+    print("\n === Saving Cleaned test Data ===")
+    features_names= best_pipeline.named_steps['preprocessor'].get_feature_names_out()   # New column names for the fitted preprocessor
+
+    cleaned_data_array= best_pipeline.named_steps['preprocessor'].transform(X_test)     # Transform the X_test data using the fitte preprocessor
+
+    cleaned_data_df= pd.DataFrame(cleaned_data_array, columns=features_names)
+
+    # Save the cleaned Dataframe as a CSV file
+    output_path= '../data/processed/cleaned_test_data.csv'
+    os.makedirs(os.path.dirname(output_path), exist_ok= True)
+    cleaned_data_df.to_csv(output_path, index= False)
+    print(f"Cleaned test data saved successfully to {output_path}")
 
     print("\n=== Model Training Complete ===")
 
