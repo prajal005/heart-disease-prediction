@@ -23,6 +23,13 @@ def run_training():
     X_train, X_test, y_train, y_test= train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
     print("Data split into training and testing sets.")
 
+    # Removal of outliers from the training set
+    print("Removing outliers from the training set.....")
+    outliers= (X_train['ca'] <= 3) & (X_train['thalach'] <= 200)
+    X_train= X_train[outliers]
+    y_train= y_train.loc[X_train.index]
+    print("=== Outliers removed ===")
+
     # Create full pipeline
     preprocessor= create_preprocessor()
     pipeline= Pipeline(steps=[
