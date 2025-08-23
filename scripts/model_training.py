@@ -3,7 +3,6 @@
 import os
 import numpy as np
 import pandas as pd
-import contextlib 
 from sklearn.pipeline import Pipeline
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import GridSearchCV, train_test_split
@@ -54,9 +53,7 @@ def run_training():
     # Run GridSearchCV
     search= GridSearchCV(pipeline, param_grid, cv=5, scoring='accuracy', n_jobs=-1, verbose=1)
     print("Starting hyperparameter tuning for K-Nearest Neighbors...")
-    # Redirect stderr to suppress the joblib traceback
-    with open(os.devnull, 'w') as f, contextlib.redirect_stderr(f):
-        search.fit(X_train, y_train)
+    search.fit(X_train, y_train)
 
     print(f"Best cross-validation score: {search.best_score_:.4f} ")
     print("Best model and hyperparameter found:")
