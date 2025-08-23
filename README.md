@@ -49,24 +49,24 @@ The dataset consists of **1,025 patient records** with **14 medical attributes**
 
 ---
 
-##  Results (Final Model – Tuned Logistic Regression)
+##  Results (Final Model – Tuned KNN)
 
-- **Accuracy**: 87.6%  
+- **Accuracy**: 99.02%  
 - **Precision**:  
-  - Class 0 (No Disease): 0.91  
-  - Class 1 (Disease): 0.85  
+  - Class 0 (No Disease): 0.98  
+  - Class 1 (Disease): 1.00 
 - **Recall**:  
-  - Class 0: 0.83  
-  - Class 1: 0.92  
+  - Class 0: 1.00  
+  - Class 1: 0.98  
 - **F1-Score**:  
-  - Class 0: 0.87  
-  - Class 1: 0.88  
+  - Class 0: 0.99  
+  - Class 1: 0.99  
 
 **Confusion Matrix:**  
 ```
                  Predicted No   Predicted Yes
-Actual No              82             17
-Actual Yes              8             94
+Actual No              100             0
+Actual Yes              2             103
 ```
 
 ---
