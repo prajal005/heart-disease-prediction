@@ -4,7 +4,7 @@ import os
 import numpy as np
 import pandas as pd
 from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import GridSearchCV, train_test_split
 
 from preprocessing import create_preprocessor
@@ -14,7 +14,7 @@ def run_training():
     """
     Executes the complete model training and tuning pipeline.
     """
-    print("=== Starting Model Training for Logistic Regression ===")
+    print("=== Starting Model Training for K-Nearest Neighbors ===")
 
     # Load Data
     df = load_data('../data/raw/heart.csv')
@@ -22,33 +22,37 @@ def run_training():
     # Split Data
     X= df.drop('target', axis=1)
     y= df['target']
-    X_train, X_test, y_train, y_test= train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-    print("Data split into training and testing sets.")
+    X_train_val, X_final_test, y_train_val, y_final_test= train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+    print("Data split into training+validation and final testing sets.")
 
-    # Removal of outliers from the training set
-    print("Removing outliers from the training set.....")
-    outliers= (X_train['ca'] <= 3) & (X_train['thalach'] <= 200)
-    X_train= X_train[outliers]
-    y_train= y_train.loc[X_train.index]
-    print("=== Outliers removed ===")
+    # split training+validation data into seperate sets
+    X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=0.25, random_state=42, stratify=y_train_val)  # 0.25 of 0.8 is 0.2
+
+    # Save the unseen final test data for later evaluation
+    final_test_df= X_final_test.copy()
+    final_test_df['target']= y_final_test
+    final_test_output_path= '../data/processed/final_test_data.csv'
+    os.makedirs(os.path.dirname(final_test_output_path), exist_ok=True)
+    final_test_df.to_csv(final_test_output_path, index=False)
+    print(f"Final unseen test data saved to {final_test_output_path}")
 
     # Create full pipeline
     preprocessor= create_preprocessor()
     pipeline= Pipeline(steps=[
         ('preprocessor', preprocessor),
-        ('classifier', LogisticRegression(max_iter=2000, random_state=42))
+        ('classifier', KNeighborsClassifier())
     ])
 
-    # Define parameter grid for Logistic Regression
+    # Define parameter grid for K-Nearest Neighbors
     param_grid= {
-        'classifier__C': [0.01, 0.1, 1, 10],
-        'classifier__penalty': ['l1', 'l2'],
-        'classifier__solver': ['liblinear', 'saga']
+        'classifier__n_neighbors': [3, 5, 7, 9, 11],
+        'classifier__weights': ['uniform', 'distance'],
+        'classifier__metric': ['euclidean', 'manhattan', 'minkowski']
     }
 
     # Run GridSearchCV
     search= GridSearchCV(pipeline, param_grid, cv=5, scoring='accuracy', n_jobs=-1, verbose=1)
-    print("Starting hyperparameter tuning for Logistic Regression...")
+    print("Starting hyperparameter tuning for K-Nearest Neighbors...")
     search.fit(X_train, y_train)
 
     print(f"Best cross-validation score: {search.best_score_:.4f} ")
@@ -61,23 +65,7 @@ def run_training():
 
     # Save the best pipeline
     best_pipeline= search.best_estimator_
-    save_pipeline(best_pipeline, '../models/final_pipeline.pkl')
-
-    # Saving the cleaned_test_data
-    print("\n === Saving Cleaned test Data ===")
-    features_names= best_pipeline.named_steps['preprocessor'].get_feature_names_out()   # New column names for the fitted preprocessor
-
-    cleaned_data_array= best_pipeline.named_steps['preprocessor'].transform(X_test)     # Transform the X_test data using the fitte preprocessor
-
-    cleaned_data_df= pd.DataFrame(cleaned_data_array, columns=features_names)
-
-    cleaned_data_df['target']= y_test.reset_index(drop=True)
-
-    # Save the cleaned Dataframe as a CSV file
-    output_path= '../data/processed/cleaned_test_data.csv'
-    os.makedirs(os.path.dirname(output_path), exist_ok= True)
-    cleaned_data_df.to_csv(output_path, index= False)
-    print(f"Cleaned test data saved successfully to {output_path}")
+    save_pipeline(best_pipeline, '../models/final_pipeline_knn.pkl')
 
     print("\n=== Model Training Complete ===")
 
