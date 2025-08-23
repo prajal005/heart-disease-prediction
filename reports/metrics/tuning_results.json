@@ -6,10 +6,10 @@
     },
     "results": [
         {
-            "mean_fit_time": 0.009969091415405274,
-            "std_fit_time": 0.001707960189362839,
-            "mean_score_time": 0.005495691299438476,
-            "std_score_time": 0.0005054884929856856,
+            "mean_fit_time": 0.012662649154663086,
+            "std_fit_time": 0.0012601737447254326,
+            "mean_score_time": 0.006545066833496094,
+            "std_score_time": 0.0023673486135193374,
             "param_classifier__metric": "minkowski",
             "param_classifier__n_neighbors": 11,
             "param_classifier__weights": "distance",
@@ -28,10 +28,10 @@
             "rank_test_score": 1
         },
         {
-            "mean_fit_time": 0.010312891006469727,
-            "std_fit_time": 0.001285984081279705,
-            "mean_score_time": 0.007626867294311524,
-            "std_score_time": 0.0007071910403523633,
+            "mean_fit_time": 0.015068244934082032,
+            "std_fit_time": 0.0013859384292824882,
+            "mean_score_time": 0.010727739334106446,
+            "std_score_time": 0.0017573124962232648,
             "param_classifier__metric": "euclidean",
             "param_classifier__n_neighbors": 11,
             "param_classifier__weights": "distance",
@@ -50,10 +50,10 @@
             "rank_test_score": 1
         },
         {
-            "mean_fit_time": 0.011123991012573243,
-            "std_fit_time": 0.0004904505015171605,
-            "mean_score_time": 0.009321975708007812,
-            "std_score_time": 0.00039854146670195863,
+            "mean_fit_time": 0.01621408462524414,
+            "std_fit_time": 0.0019892855157146107,
+            "mean_score_time": 0.012858009338378907,
+            "std_score_time": 0.0020510152214716364,
             "param_classifier__metric": "manhattan",
             "param_classifier__n_neighbors": 9,
             "param_classifier__weights": "distance",
@@ -72,10 +72,10 @@
             "rank_test_score": 3
         },
         {
-            "mean_fit_time": 0.010292530059814453,
-            "std_fit_time": 0.0019660696530220045,
-            "mean_score_time": 0.0061992168426513675,
-            "std_score_time": 0.0009799392673908174,
+            "mean_fit_time": 0.014788007736206055,
+            "std_fit_time": 0.0027646981407396013,
+            "mean_score_time": 0.01596827507019043,
+            "std_score_time": 0.009679660578212628,
             "param_classifier__metric": "manhattan",
             "param_classifier__n_neighbors": 7,
             "param_classifier__weights": "distance",
@@ -94,10 +94,10 @@
             "rank_test_score": 3
         },
         {
-            "mean_fit_time": 0.011621427536010743,
-            "std_fit_time": 0.00019648135135041876,
-            "mean_score_time": 0.008473634719848633,
-            "std_score_time": 0.00036429800283932707,
+            "mean_fit_time": 0.016472434997558592,
+            "std_fit_time": 0.0034828091914529216,
+            "mean_score_time": 0.011167812347412109,
+            "std_score_time": 0.0009398844003227159,
             "param_classifier__metric": "minkowski",
             "param_classifier__n_neighbors": 9,
             "param_classifier__weights": "distance",
@@ -116,10 +116,10 @@
             "rank_test_score": 5
         },
         {
-            "mean_fit_time": 0.010354280471801758,
-            "std_fit_time": 0.0014794914268889652,
-            "mean_score_time": 0.007605314254760742,
-            "std_score_time": 0.001357300223209176,
+            "mean_fit_time": 0.021892070770263672,
+            "std_fit_time": 0.00594453291150514,
+            "mean_score_time": 0.014412546157836914,
+            "std_score_time": 0.0013290173302590326,
             "param_classifier__metric": "minkowski",
             "param_classifier__n_neighbors": 7,
             "param_classifier__weights": "distance",
@@ -138,10 +138,10 @@
             "rank_test_score": 5
         },
         {
-            "mean_fit_time": 0.01092081069946289,
-            "std_fit_time": 0.0010229503591860864,
-            "mean_score_time": 0.008015298843383789,
-            "std_score_time": 0.00044502495921681164,
+            "mean_fit_time": 0.016821861267089844,
+            "std_fit_time": 0.0014173969729185602,
+            "mean_score_time": 0.012715673446655274,
+            "std_score_time": 0.004892533613471255,
             "param_classifier__metric": "euclidean",
             "param_classifier__n_neighbors": 7,
             "param_classifier__weights": "distance",
@@ -160,10 +160,10 @@
             "rank_test_score": 5
         },
         {
-            "mean_fit_time": 0.01141815185546875,
-            "std_fit_time": 0.001195301586060928,
-            "mean_score_time": 0.009121036529541016,
-            "std_score_time": 0.00213833830290788,
+            "mean_fit_time": 0.015328502655029297,
+            "std_fit_time": 0.002238363620539847,
+            "mean_score_time": 0.012499475479125976,
+            "std_score_time": 0.00402135912890923,
             "param_classifier__metric": "euclidean",
             "param_classifier__n_neighbors": 9,
             "param_classifier__weights": "distance",
@@ -182,10 +182,10 @@
             "rank_test_score": 5
         },
         {
-            "mean_fit_time": 0.010316228866577149,
-            "std_fit_time": 0.0016098471650527837,
-            "mean_score_time": 0.009220170974731445,
-            "std_score_time": 0.0006665667287409001,
+            "mean_fit_time": 0.011963987350463867,
+            "std_fit_time": 0.0024871504679529898,
+            "mean_score_time": 0.008471059799194335,
+            "std_score_time": 0.0012372012477624905,
             "param_classifier__metric": "manhattan",
             "param_classifier__n_neighbors": 11,
             "param_classifier__weights": "distance",
@@ -204,10 +204,10 @@
             "rank_test_score": 5
         },
         {
-            "mean_fit_time": 0.012981081008911132,
-            "std_fit_time": 0.0019504244547156513,
-            "mean_score_time": 0.05107426643371582,
-            "std_score_time": 0.08562493855790215,
+            "mean_fit_time": 0.016921281814575195,
+            "std_fit_time": 0.0023231109567207237,
+            "mean_score_time": 0.08170452117919921,
+            "std_score_time": 0.14319571280930077,
             "param_classifier__metric": "euclidean",
             "param_classifier__n_neighbors": 5,
             "param_classifier__weights": "distance",
@@ -226,10 +226,10 @@
             "rank_test_score": 10
         },
         {
-            "mean_fit_time": 0.010725021362304688,
-            "std_fit_time": 0.0013283998847607315,
-            "mean_score_time": 0.0068566322326660155,
-            "std_score_time": 0.0010875340110002058,
+            "mean_fit_time": 0.022948408126831056,
+            "std_fit_time": 0.0073435048292399534,
+            "mean_score_time": 0.009489107131958007,
+            "std_score_time": 0.0015486171563514118,
             "param_classifier__metric": "minkowski",
             "param_classifier__n_neighbors": 5,
             "param_classifier__weights": "distance",
@@ -248,10 +248,10 @@
             "rank_test_score": 10
         },
         {
-            "mean_fit_time": 0.011448955535888672,
-            "std_fit_time": 0.0005107945341352884,
-            "mean_score_time": 0.008743190765380859,
-            "std_score_time": 0.0008433678045611517,
+            "mean_fit_time": 0.01952786445617676,
+            "std_fit_time": 0.005400715158143919,
+            "mean_score_time": 0.010529088973999023,
+            "std_score_time": 0.0017167030642384938,
             "param_classifier__metric": "manhattan",
             "param_classifier__n_neighbors": 5,
             "param_classifier__weights": "distance",
@@ -270,10 +270,10 @@
             "rank_test_score": 12
         },
         {
-            "mean_fit_time": 0.014637994766235351,
-            "std_fit_time": 0.0008632084232677486,
-            "mean_score_time": 0.23165693283081054,
-            "std_score_time": 0.0026053384193469894,
+            "mean_fit_time": 0.020142650604248045,
+            "std_fit_time": 0.0006948118340939747,
+            "mean_score_time": 0.3622990608215332,
+            "std_score_time": 0.016033541634065996,
             "param_classifier__metric": "euclidean",
             "param_classifier__n_neighbors": 3,
             "param_classifier__weights": "distance",
@@ -292,10 +292,10 @@
             "rank_test_score": 13
         },
         {
-            "mean_fit_time": 0.011809301376342774,
-            "std_fit_time": 0.00023161671780763194,
-            "mean_score_time": 0.007821130752563476,
-            "std_score_time": 0.000754552690858587,
+            "mean_fit_time": 0.017690038681030272,
+            "std_fit_time": 0.004619926479672371,
+            "mean_score_time": 0.009686851501464843,
+            "std_score_time": 0.0006910580771920417,
             "param_classifier__metric": "minkowski",
             "param_classifier__n_neighbors": 3,
             "param_classifier__weights": "distance",
@@ -314,10 +314,10 @@
             "rank_test_score": 13
         },
         {
-            "mean_fit_time": 0.012292861938476562,
-            "std_fit_time": 0.0008599168592274586,
-            "mean_score_time": 0.009168386459350586,
-            "std_score_time": 0.0004961294828416398,
+            "mean_fit_time": 0.017392683029174804,
+            "std_fit_time": 0.002214412527920809,
+            "mean_score_time": 0.010003185272216797,
+            "std_score_time": 0.0010894150337853634,
             "param_classifier__metric": "manhattan",
             "param_classifier__n_neighbors": 3,
             "param_classifier__weights": "distance",
@@ -336,10 +336,10 @@
             "rank_test_score": 15
         },
         {
-            "mean_fit_time": 0.010715150833129882,
-            "std_fit_time": 0.0016182330444288685,
-            "mean_score_time": 0.00822911262512207,
-            "std_score_time": 0.0004119395243788883,
+            "mean_fit_time": 0.016630268096923827,
+            "std_fit_time": 0.005565547212241048,
+            "mean_score_time": 0.010289144515991212,
+            "std_score_time": 0.000587007718203947,
             "param_classifier__metric": "minkowski",
             "param_classifier__n_neighbors": 3,
             "param_classifier__weights": "uniform",
@@ -358,10 +358,10 @@
             "rank_test_score": 16
         },
         {
-            "mean_fit_time": 0.016232728958129883,
-            "std_fit_time": 0.0006805053163009268,
-            "mean_score_time": 0.23397107124328614,
-            "std_score_time": 0.005010086821196718,
+            "mean_fit_time": 0.02493901252746582,
+            "std_fit_time": 0.006324406336036188,
+            "mean_score_time": 0.3679346561431885,
+            "std_score_time": 0.020863531651431233,
             "param_classifier__metric": "euclidean",
             "param_classifier__n_neighbors": 3,
             "param_classifier__weights": "uniform",
@@ -380,10 +380,10 @@
             "rank_test_score": 16
         },
         {
-            "mean_fit_time": 0.009528779983520507,
-            "std_fit_time": 0.001485114987108884,
-            "mean_score_time": 0.009015035629272462,
-            "std_score_time": 0.0006850379829354863,
+            "mean_fit_time": 0.014934062957763672,
+            "std_fit_time": 0.0008643334001754931,
+            "mean_score_time": 0.009887361526489257,
+            "std_score_time": 0.0007050619675394473,
             "param_classifier__metric": "manhattan",
             "param_classifier__n_neighbors": 3,
             "param_classifier__weights": "uniform",
@@ -402,10 +402,10 @@
             "rank_test_score": 18
         },
         {
-            "mean_fit_time": 0.010724544525146484,
-            "std_fit_time": 0.0015238895710506207,
-            "mean_score_time": 0.007620573043823242,
-            "std_score_time": 0.0014882434903867473,
+            "mean_fit_time": 0.015544748306274414,
+            "std_fit_time": 0.002911180822089637,
+            "mean_score_time": 0.008923149108886719,
+            "std_score_time": 0.0002510059930609729,
             "param_classifier__metric": "minkowski",
             "param_classifier__n_neighbors": 5,
             "param_classifier__weights": "uniform",
@@ -424,10 +424,10 @@
             "rank_test_score": 19
         },
         {
-            "mean_fit_time": 0.015626049041748045,
-            "std_fit_time": 0.0004897295810239481,
-            "mean_score_time": 0.23646893501281738,
-            "std_score_time": 0.0035599085510771,
+            "mean_fit_time": 0.02057809829711914,
+            "std_fit_time": 0.001379157501652344,
+            "mean_score_time": 0.3689742088317871,
+            "std_score_time": 0.007067532853746722,
             "param_classifier__metric": "euclidean",
             "param_classifier__n_neighbors": 5,
             "param_classifier__weights": "uniform",
@@ -446,10 +446,10 @@
             "rank_test_score": 19
         },
         {
-            "mean_fit_time": 0.011716175079345702,
-            "std_fit_time": 0.0007156220674184233,
-            "mean_score_time": 0.007711076736450195,
-            "std_score_time": 0.000967461014968599,
+            "mean_fit_time": 0.014888811111450195,
+            "std_fit_time": 0.0017309326205483583,
+            "mean_score_time": 0.00979928970336914,
+            "std_score_time": 0.0003451977762082921,
             "param_classifier__metric": "manhattan",
             "param_classifier__n_neighbors": 7,
             "param_classifier__weights": "uniform",
@@ -468,10 +468,10 @@
             "rank_test_score": 19
         },
         {
-            "mean_fit_time": 0.011222934722900391,
-            "std_fit_time": 0.0009951037024536504,
-            "mean_score_time": 0.007014942169189453,
-            "std_score_time": 0.0014315013909501314,
+            "mean_fit_time": 0.021655893325805663,
+            "std_fit_time": 0.009473113445141302,
+            "mean_score_time": 0.010067605972290039,
+            "std_score_time": 0.0014395947610827164,
             "param_classifier__metric": "minkowski",
             "param_classifier__n_neighbors": 7,
             "param_classifier__weights": "uniform",
@@ -490,10 +490,10 @@
             "rank_test_score": 22
         },
         {
-            "mean_fit_time": 0.012021446228027343,
-            "std_fit_time": 0.0007766820855693821,
-            "mean_score_time": 0.015151643753051757,
-            "std_score_time": 0.0009892004097633647,
+            "mean_fit_time": 0.015360450744628907,
+            "std_fit_time": 0.0011422211830917936,
+            "mean_score_time": 0.02073369026184082,
+            "std_score_time": 0.0014205392515853385,
             "param_classifier__metric": "euclidean",
             "param_classifier__n_neighbors": 7,
             "param_classifier__weights": "uniform",
@@ -512,10 +512,10 @@
             "rank_test_score": 22
         },
         {
-            "mean_fit_time": 0.01288466453552246,
-            "std_fit_time": 0.001165219884135448,
-            "mean_score_time": 0.009116697311401366,
-            "std_score_time": 0.0004931480781636947,
+            "mean_fit_time": 0.019681501388549804,
+            "std_fit_time": 0.006058013413081503,
+            "mean_score_time": 0.012135839462280274,
+            "std_score_time": 0.0018335432759535276,
             "param_classifier__metric": "manhattan",
             "param_classifier__n_neighbors": 5,
             "param_classifier__weights": "uniform",
@@ -534,10 +534,10 @@
             "rank_test_score": 24
         },
         {
-            "mean_fit_time": 0.00942230224609375,
-            "std_fit_time": 0.0014363437017603001,
-            "mean_score_time": 0.00881643295288086,
-            "std_score_time": 0.0006071556768824993,
+            "mean_fit_time": 0.014587211608886718,
+            "std_fit_time": 0.0012327908010237583,
+            "mean_score_time": 0.01184234619140625,
+            "std_score_time": 0.0010617472887033078,
             "param_classifier__metric": "manhattan",
             "param_classifier__n_neighbors": 9,
             "param_classifier__weights": "uniform",
@@ -556,10 +556,10 @@
             "rank_test_score": 25
         },
         {
-            "mean_fit_time": 0.013032484054565429,
-            "std_fit_time": 0.0029335521453777,
-            "mean_score_time": 0.01610426902770996,
-            "std_score_time": 0.0006738548334523771,
+            "mean_fit_time": 0.015942764282226563,
+            "std_fit_time": 0.002082547338107283,
+            "mean_score_time": 0.018595314025878905,
+            "std_score_time": 0.002822312707217216,
             "param_classifier__metric": "euclidean",
             "param_classifier__n_neighbors": 9,
             "param_classifier__weights": "uniform",
@@ -578,10 +578,10 @@
             "rank_test_score": 26
         },
         {
-            "mean_fit_time": 0.010522842407226562,
-            "std_fit_time": 0.0015534835617079413,
-            "mean_score_time": 0.008614015579223634,
-            "std_score_time": 0.0007454463999540257,
+            "mean_fit_time": 0.014469623565673828,
+            "std_fit_time": 0.0013276529051733147,
+            "mean_score_time": 0.016205024719238282,
+            "std_score_time": 0.004364606615487446,
             "param_classifier__metric": "minkowski",
             "param_classifier__n_neighbors": 9,
             "param_classifier__weights": "uniform",
@@ -600,10 +600,10 @@
             "rank_test_score": 26
         },
         {
-            "mean_fit_time": 0.01224813461303711,
-            "std_fit_time": 0.0011607155530702741,
-            "mean_score_time": 0.007195711135864258,
-            "std_score_time": 0.0009787432481970474,
+            "mean_fit_time": 0.015665483474731446,
+            "std_fit_time": 0.001072763101380074,
+            "mean_score_time": 0.009829187393188476,
+            "std_score_time": 0.0012249785723285119,
             "param_classifier__metric": "manhattan",
             "param_classifier__n_neighbors": 11,
             "param_classifier__weights": "uniform",
@@ -622,10 +622,10 @@
             "rank_test_score": 28
         },
         {
-            "mean_fit_time": 0.011486625671386719,
-            "std_fit_time": 0.0010309789762676224,
-            "mean_score_time": 0.006855440139770508,
-            "std_score_time": 0.001180225981815227,
+            "mean_fit_time": 0.01888718605041504,
+            "std_fit_time": 0.004519428735820791,
+            "mean_score_time": 0.008600950241088867,
+            "std_score_time": 0.0018778282165819494,
             "param_classifier__metric": "minkowski",
             "param_classifier__n_neighbors": 11,
             "param_classifier__weights": "uniform",
@@ -644,10 +644,10 @@
             "rank_test_score": 29
         },
         {
-            "mean_fit_time": 0.011804866790771484,
-            "std_fit_time": 0.0005122010963700564,
-            "mean_score_time": 0.014586877822875977,
-            "std_score_time": 0.0017219938131912834,
+            "mean_fit_time": 0.015696954727172852,
+            "std_fit_time": 0.0011675292373810326,
+            "mean_score_time": 0.020633459091186523,
+            "std_score_time": 0.004617876559154472,
             "param_classifier__metric": "euclidean",
             "param_classifier__n_neighbors": 11,
             "param_classifier__weights": "uniform",
