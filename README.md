@@ -71,7 +71,7 @@ The project follows a standard machine learning pipeline:
 ---
 
 ## 3. Project Structure
-
+```
 heart-disease-prediction/
 ├── app/
 │   ├── app.py                   # Streamlit web application
@@ -106,7 +106,7 @@ heart-disease-prediction/
 ├── model_utils.py           # Helper functions (load/save data/models)
 ├── preprocessing.py         # Data preprocessing pipeline definition
 └── visualisation.py         # Script to generate and save key visualizations
-
+```
 
 ---
 
