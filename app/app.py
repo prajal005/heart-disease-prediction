@@ -11,27 +11,24 @@ st.set_page_config(page_title="Heart Disease Prediction", layout="wide")
 try:
     app_dir= os.path.dirname(os.path.abspath(__file__))
     project_dir= os.path.dirname(app_dir)
-    model_path= os.path.join(project_dir, "models", "final_model.pkl")
-    preprocessor_path= os.path.join(project_dir, "models", "preprocessor.pkl")
+    model_path= os.path.join(project_dir, "models", "final_pipeline_knn.pkl")
 
     # Loading the artifacts
     @st.cache_resource   ## To load the model and preprocessor only once
     def load_artifacts():
         """Loads the pre-trained model and preprocessor."""
         try:
-            model= joblib.load(model_path)
-            preprocessor= joblib.load(preprocessor_path)
-            return model, preprocessor
+            pipeline= joblib.load(model_path)
+            return pipeline 
         except FileNotFoundError as e:
             st.error(f"Error loading model artifacts: {e}")
-            st.info("Please make sure the 'final_model.pkl' and 'preprocessor.pkl' file are in the 'models' directory.")
-            return None, None
+            st.info("Please make sure the 'final_pipeline_knn.pkl' file is in the 'models' directory.")
+            return None
         
-    model, preprocessor= load_artifacts()
+    pipeline= load_artifacts()
 except Exception as e:
     st.error(f"An error occured during the startup: {e}")
-    model= None
-    preprocessor= None
+    pipeline= None
 
 # --- APP LAYOUT ---
 
@@ -85,7 +82,7 @@ def get_user_input():
 input_df= get_user_input()
 
 # --- PREDICTION & DISPLAY ---
-if model and preprocessor:
+if pipeline:
     # Displays the user's input data
     st.subheader("Patient's Input Data")  
     st.write(input_df)
@@ -93,26 +90,39 @@ if model and preprocessor:
     # Prediction Button
     if st.sidebar.button('Predict Heart Disease Risk'):
         try:
-            # Preprocess the user input
-            preprocessed_input= preprocessor.transform(input_df)
-
-            # Make a prediction
-            prediction= model.predict(preprocessed_input)
-            prediction_proba= model.predict_proba(preprocessed_input)
+            # Pipeline handles both preprocessing and prediction
+            prediction= pipeline.predict(input_df)
+            prediction_proba= pipeline.predict_proba(input_df)
 
             # Display the result
             st.header("Prediction Result")
             if prediction[0] == 1:
                 st.success("Low Risk: The model predicts a low likelihood of heart disease.")
-                st.write(f"**Prediction Probability** {prediction_proba[0][1]*100:.2f}")
+                st.write(f"**Prediction Probability (No Heart Disease):** {prediction_proba[0][1]*100:.2f}%")
+                
+                # --- Post-Prediction Information for Low Risk ---
+                st.markdown("---")
+                st.subheader("General Recommendations")
+                st.info("Great! Continue to maintain a healthy lifestyle. Regular exercise, a balanced diet, and routine check-ups are always beneficial for heart health.")
+
             else:
                 st.error("High Risk: The model predicts a high likelihood of heart disease.")
-                st.write(f"**Prediction Probability:** {prediction_proba[0][0]*100:.2f}")
+                st.write(f"**Prediction Probability (Heart Disease):** {prediction_proba[0][0]*100:.2f}%")
+                
+                # --- Post-Prediction Information for High Risk ---
+                st.markdown("---")
+                st.subheader("General Recommendations")
+                st.warning("It's recommended to consult a healthcare professional for a comprehensive evaluation. They can provide personalized advice and further tests if needed. Maintaining a healthy diet, regular physical activity, and managing stress are crucial for heart health.")
+
+            # --- About the Model ---
+            st.markdown("---")
+            st.subheader("About This Prediction")
+            st.info("This prediction was made using a **K-Nearest Neighbors (KNN)** machine learning model. The model achieved an accuracy of **99.02%** on unseen test data.")
 
         except Exception as e:
             st.error(f"An error occured during prediction: {e}")
 else:
-    st.warning("Model artifacts not loaded. Prediction is unavailable.")
+    st.warning("Model pipeline not loaded. Prediction is unavailable.")
 
 st.sidebar.markdown("----")
 st.sidebar.info("This is a demo application. Do not use for actual medical diagnostics.")
