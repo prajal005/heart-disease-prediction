@@ -1,5 +1,9 @@
 # This script evaluates the trained ML model.
 
+import warnings
+warnings.filterwarnings('ignore', category=UserWarning)  # 
+
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
@@ -16,10 +20,10 @@ def run_evaluation():
     df= load_data('../data/raw/heart.csv')
     X= df.drop('target', axis=1)
     y= df['target']
-    _, X_test, _, y_test= train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+    _train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
     # Load the trained pipeline
-    pipeline= load_pipeline('../models/final_pipeline.pkl')
+    pipeline= load_pipeline('../models/final_pipeline_knn.pkl')
 
     # Prediction on the raw test data
     y_pred= pipeline.predict(X_test)
