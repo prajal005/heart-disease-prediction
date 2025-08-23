@@ -18,17 +18,17 @@ The dataset consists of **1,025 patient records** with **14 medical attributes**
 **Features include:**  
 - `age` → Age of patient  
 - `sex` → Gender (1 = male, 0 = female)  
-- `cp` → Chest pain type (0–3)  
+- `cp` → Chest pain type (0 = typical angina, 1 = atypical angina, 2 = non-anginal, 3 = asymptomatic)  
 - `trestbps` → Resting blood pressure (mm Hg)  
 - `chol` → Serum cholesterol (mg/dl)  
 - `fbs` → Fasting blood sugar > 120 mg/dl (1 = true, 0 = false)  
-- `restecg` → Resting electrocardiographic results (0–2)  
+- `restecg` → Resting electrocardiographic results (0 = normal, 1 = ST-T abnormality, 2 = left ventricular hypertrophy)  
 - `thalach` → Maximum heart rate achieved  
 - `exang` → Exercise induced angina (1 = yes, 0 = no)  
 - `oldpeak` → ST depression induced by exercise  
-- `slope` → Slope of the peak exercise ST segment  
+- `slope` → Slope of the peak exercise ST segment (0 = up, 1 = flat, 2 = down)
 - `ca` → Number of major vessels (0–3) colored by fluoroscopy  
-- `thal` → Thalassemia (3 = normal, 6 = fixed defect, 7 = reversible defect)  
+- `thal` → Thalassemia (1 = normal, 2 = fixed defect, 3 = reversible defect)  
 - `target` → Presence of heart disease (1 = disease, 0 = no disease)  
 
 ---
@@ -41,32 +41,33 @@ The dataset consists of **1,025 patient records** with **14 medical attributes**
    - Visual comparison of target vs. predictors  
 
 2. **Model Training** (`training.ipynb`)  
-   - Trained multiple models (Logistic Regression, KNN, SVM, Naive Bayes, Decision Tree, Random Forest, Gradient Boosting, XGBoost)  
-   - Selected **Logistic Regression** as the best-performing model  
+   - Trained multiple models (Logistic Regression, KNN, SVM, Naive Bayes, Decision Tree, Random Forest, Gradient Boosting, XGBoost)
+   - Hyper parameter tuned all the model
+   - Selected **K-Nearest Neighbors** as the best-performing model  
 
 3. **Model Testing** (`testing.ipynb`)  
-   - Evaluated the tuned Logistic Regression model on unseen test data  
+   - Evaluated the hyperparameter tuned KNN  model on unseen test data  
 
 ---
 
-##  Results (Final Model – Tuned Logistic Regression)
+##  Results (Final Model – Tuned KNN)
 
-- **Accuracy**: 87.6%  
+- **Accuracy**: 99.02%  
 - **Precision**:  
-  - Class 0 (No Disease): 0.91  
-  - Class 1 (Disease): 0.85  
+  - Class 0 (No Disease): 0.98  
+  - Class 1 (Disease): 1.00 
 - **Recall**:  
-  - Class 0: 0.83  
-  - Class 1: 0.92  
+  - Class 0: 1.00  
+  - Class 1: 0.98  
 - **F1-Score**:  
-  - Class 0: 0.87  
-  - Class 1: 0.88  
+  - Class 0: 0.99  
+  - Class 1: 0.99  
 
 **Confusion Matrix:**  
 ```
                  Predicted No   Predicted Yes
-Actual No              82             17
-Actual Yes              8             94
+Actual No              100             0
+Actual Yes              2             103
 ```
 
 ---
@@ -75,7 +76,7 @@ Actual Yes              8             94
 
 This project demonstrates how machine learning can be effectively used to predict the likelihood of heart disease based on patient medical data.  
 
- The tuned **Logistic Regression model** achieved **87.6% accuracy**, with strong precision and recall scores.  
+ The tuned **K-Nearest Neighbors model** achieved **99.02% accuracy**, with strong precision and recall scores.  
  The model highlights important health attributes like chest pain type, cholesterol levels, and maximum heart rate as strong predictors.  
 
 **Future Improvements:**  
