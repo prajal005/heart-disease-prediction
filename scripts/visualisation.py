@@ -1,37 +1,14 @@
 # This script generates and saves key visualizations from the raw dataset
 
+import os
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-import os
 
-def generate_visualizations():
-    """
-    Loads the raw data, creates several plots, and saves them to the
-    'reports/figures' directory.
-    """
-    print("--- Starting Data Visualization ---")
+from model_utils import load_data
 
-    # 1. Define File Paths
-
-    raw_data_path = '../data/raw/heart.csv'
-    output_dir = '../reports/figures/'
-
-    # 2. Create Output Directory
-    os.makedirs(output_dir, exist_ok=True)
-    print(f"Plots will be saved in: {output_dir}")
-
-    # 3. Load Raw Data
-    try:
-        df = pd.read_csv('../data/raw/heart.csv')
-        print("Raw data loaded successfully.")
-    except FileNotFoundError:
-        print(f"Error: Raw data file not found at {raw_data_path}")
-        return
-
-    # 4. Generate and Save Visualizations
-
-    # Plot 1: Target Variable Distribution
+def _plot_target_distribution(df, output_dir):
+    """Generates and saves the target variable distribution plot."""
     plt.figure(figsize=(8, 6))
     sns.countplot(x='target', data=df)
     plt.title('Distribution of Target Variable (Heart Disease)')
@@ -41,7 +18,8 @@ def generate_visualizations():
     plt.close()
     print("Generated: target_distribution.png")
 
-    # Plot 2: Correlation Heatmap of all features
+def _plot_correlation_heatmap(df, output_dir):
+    """Generates and saves the correlation heatmap of all features."""
     plt.figure(figsize=(12, 10))
     correlation_matrix = df.corr()
     sns.heatmap(correlation_matrix, annot=True, fmt='.2f', cmap='coolwarm')
@@ -50,7 +28,8 @@ def generate_visualizations():
     plt.close()
     print("Generated: correlation_heatmap.png")
 
-    # Plot 3: Age Distribution
+def _plot_age_distribution(df, output_dir):
+    """Generates and saves the age distribution plot."""
     plt.figure(figsize=(10, 6))
     sns.histplot(df['age'], kde=True, bins=30)
     plt.title('Age Distribution of Patients')
@@ -60,7 +39,8 @@ def generate_visualizations():
     plt.close()
     print("Generated: age_distribution.png")
 
-    # Plot 4: Chest Pain Type vs. Target
+def _plot_chest_pain_vs_target(df, output_dir):
+    """Generates and saves the chest pain vs. target plot."""
     plt.figure(figsize=(10, 6))
     sns.countplot(x='cp', hue='target', data=df)
     plt.title('Chest Pain Type vs. Heart Disease')
@@ -71,15 +51,40 @@ def generate_visualizations():
     plt.close()
     print("Generated: chest_pain_vs_target.png")
 
-    # Plot 5: Pairplot of key numerical features
+def _plot_pairplot(df, output_dir):
+    """Generates and saves the pairplot of key numerical features."""
     print("Generating pairplot... (this may take a moment)")
     pairplot_features = ['age', 'trestbps', 'chol', 'thalach', 'target']
-    sns.pairplot(df[pairplot_features], hue='target', palette='viridis')
-    plt.suptitle('Pairwise Relationships of Key Features by Heart Disease', y=1.02)
-    plt.savefig(os.path.join(output_dir, 'pairplot.png'))
+    pairplot = sns.pairplot(df[pairplot_features], hue='target', palette='viridis')
+    pairplot.fig.suptitle('Pairwise Relationships of Key Features by Heart Disease', y=1.02)
+    pairplot.savefig(os.path.join(output_dir, 'pairplot.png'))
     plt.close()
     print("Generated: pairplot.png")
 
+def generate_visualizations():
+    """
+    Loads the raw data, creates several plots, and saves them to the
+    'reports/figures' directory.
+    """
+    print("--- Starting Data Visualization ---")
+    raw_data_path = '../data/raw/heart.csv'
+    output_dir = '../reports/figures/'
+    os.makedirs(output_dir, exist_ok=True)
+    print(f"Plots will be saved in: {output_dir}")
+
+    # Load Raw Data
+    try:
+        df = load_data(raw_data_path)
+    except FileNotFoundError:
+        print(f"Error: Raw data file not found at {raw_data_path}")
+        return
+
+    # Generate and Save all Visualizations
+    _plot_target_distribution(df, output_dir)
+    _plot_correlation_heatmap(df, output_dir)
+    _plot_age_distribution(df, output_dir)
+    _plot_chest_pain_vs_target(df, output_dir)
+    _plot_pairplot(df, output_dir)
 
     print("\n--- Data Visualization Complete ---")
 
